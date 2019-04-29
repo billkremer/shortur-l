@@ -1,10 +1,10 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app') -->
 
 @section('content')
 
-<?php 
-var_dump($longUrl);
-  header('Location: '.$longUrl);
+<?php
+// https://css-tricks.com/redirect-web-page/#article-header-id-6
+  header('Location: ' . $longUrl);
   exit;
 ?>
 

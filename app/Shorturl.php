@@ -13,6 +13,14 @@ class Shorturl extends Model
      */
     protected $table = 'urls';
 
+// CREATE TABLE urls (
+//     id SERIAL PRIMARY KEY,
+//     userid integer,
+//     url character varying,
+//     shorturl character varying,
+//     hitcount SERIAL
+// );
+
 
 /**
      * The attributes that are mass assignable.
@@ -20,7 +28,7 @@ class Shorturl extends Model
      * @var array
      */
     protected $fillable = [
-        'shorturl', 'url',
+        'shorturl', 'url', 'userid'
     ];
 
     /**
@@ -31,22 +39,6 @@ class Shorturl extends Model
     protected $hidden = [
         // 'password', 'remember_token',
     ];
-
-
-
-	// public function getShortURL() {
-	// 		return ->first('App\Techtrav\Model\Group','agentId');
-	// }
-
-
-// CREATE TABLE urls (
-//     id SERIAL PRIMARY KEY,
-//     userid integer,
-//     url character varying,
-//     shorturl character varying,
-//     hitcount SERIAL
-// );
-
 
 
 

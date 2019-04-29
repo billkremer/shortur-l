@@ -18,30 +18,55 @@ class UrlController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Send the user to their shorturl.
+     * @var string
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index($shorturl)
     {
 
-        //convert shorturl to 
-
-
-
-
-        // get long url from db
-print_r($shorturl);
-// die;
-        
+        // get long url from db   
         $lu = Shorturl::where('shorturl', $shorturl)->first()->value('url');
-        // ->first()->value('url');
-print_r($lu);
-die;
+
         $longUrl['longUrl'] = $lu;
 
-        // $longUrl should be an array
         return view('url', $longUrl);
     }
+
+    public function store()
+    {
+
+        
+        do {
+            $newSU = $this->alphanum(5);
+        } while (Shorturl::where('shorturl', $newSU)->first()); 
+        // if it exists already, get a new shortened url.
+
+        // $su = new Shorturl
+        // $su->userid = Auth::user()->id;
+        // $su->url = 
+        // $su->shorturl = $newSU;
+
+
+        // $su->save();
+        return redirect()->route('/home'); // ? get updated data first...
+    }
+
+    private function alphanum($numChar) 
+    {
+        $chars = 'abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ23456789';
+        $string = '';
+        $max = strlen($chars) - 1;
+
+        for ($i = 0; $i < $numChar; $i++) {
+             $string .= $chars[random_int(0, $max)];
+        }
+
+        return $string;
+    }
+
+
+
 }
 

@@ -21,12 +21,7 @@ Route::get('/logout', function () {
 });
 
 
-Route::get('/test', function () {
-    return view('url');
-});
-
 Route::get('/t/{shorturl}', 'UrlController@index');
-
 
 Auth::routes();
 
