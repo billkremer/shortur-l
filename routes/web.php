@@ -15,7 +15,17 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-// Route::get('/t/{shorturl}', 'UrlController@index');
+
+Route::get('/logout', function () {
+    return redirect('/');
+});
+
+
+Route::get('/test', function () {
+    return view('url');
+});
+
+Route::get('/t/{shorturl}', 'UrlController@index');
 
 
 Auth::routes();
