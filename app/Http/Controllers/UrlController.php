@@ -34,7 +34,7 @@ class UrlController extends Controller
 print_r($shorturl);
 // die;
         
-        $lu = Shorturl::where('shorturl', $shorturl);
+        $lu = Shorturl::where('shorturl', $shorturl)->first()->value('url');
         // ->first()->value('url');
 print_r($lu);
 die;
