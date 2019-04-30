@@ -76,50 +76,30 @@
                 </div>
 
 <!-- foreach -1 start -->
+<!-- will have to do as a for loop -->
+  @foreach($urls as $url)
 
-<?php  foreach ($urls as $key => $value) {
-print_r($key);
-print_r($value);
-
-
-
-}
-die;
-  ?>
-
-                <div class="col-md-12 border border-dark mb-n1 bg-white">
+                <div class="col-md-12 border border-dark mb-n1 bg-white @if ($loop->last) rounded-bottom @endif">
                     <div class="row">
-                        <div class="col-md-6 border-right border-dark text-dark">
-                            Original URL
+                        <div class="col-md-6 border-right border-dark py-3">
+                            <a class="text-decoration-none text-reset" href="<?= $url['url']; ?>" target="_blank"><?= $url['url']; ?></a>
                         </div>
                     
-                        <div class="col-md-4 border-right border-dark">
-                            Tiny URL
+                        <div class="col-md-4 border-right border-dark py-3">
+                            <a class="text-decoration-none text-reset" href="http://127.0.0.1:8000/t/<?= $url['shorturl']; ?>" target="_blank">http://localhost:8000/t/<?= $url['shorturl']; ?></a>
                         </div>
-                        <div class="col-md-2 ">
-                            Hit Count
+                        <div class="col-md-2 py-3">
+                            <?= $url['hitcount']; ?>
                         </div>
                     </div>
 
                 </div>
+                @endforeach
 <!-- foreach end -->
 
 <!-- bottom row -->
 
-                <div class="col-md-12 border border-dark rounded-bottom bg-white mb-0">
-                    <div class="row">
-                        <div class="col-md-6 border-right border-dark ">
-                            Original URL
-                        </div>
-                    
-                        <div class="col-md-4 border-right border-dark">
-                            Tiny URL
-                        </div>
-                        <div class="col-md-2 ">
-                            Hit Count
-                        </div>
-                    </div>
-                </div>
+  
             </div>
 
 

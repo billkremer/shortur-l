@@ -37,8 +37,10 @@ class HomeController extends Controller
         $userid = Auth::user()->id;
 
         $urls = Shorturl::where('userid', $userid)->get();
-
-        return view('home', $urls);
+        // ->only(['url','shorturl','hitcount']);
+        // $urlarray = $urls->only(['url','shorturl','hitcount']);
+// print_r($urls->all()); die; //['groups'=>$groups]
+        return view('home', ['urls'=>$urls->all()]);
     }
 
 
