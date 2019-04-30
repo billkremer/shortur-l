@@ -27,5 +27,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
-Route::post('/newUrl', 'UrlController@create')->name('newUrl');
+Route::post('/newUrl', 'HomeController@create')->name('newUrl');
 

@@ -22,7 +22,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -42,22 +42,41 @@ class HomeController extends Controller
     }
 
 
-    public function getRandShortUrl ()
+    public function create(Request $request)
     {
+        $validatedData = $request->validate([
+            'url' => 'required|string|url',
+        ]);
+        // print_r($validatedData); die;
+        
 
+
+        do {
+            $newSU = $this->alphanum(5);
+        } while (Shorturl::where('shorturl', $newSU)->first()); 
+        // if it exists already, get a new shortened url.
+
+        $su = new Shorturl();
+        $su->userid = Auth::user()->id;
+        $su->url = $request->get('url');
+        $su->shorturl = $newSU;
+
+
+        $su->save();
+        return redirect()->route('home'); // ? get updated data first...
     }
 
-    /**
-     * Get a validator for an incoming url request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    private function alphanum($numChar) 
     {
-        return Validator::make($data, [
-            'url' => ['required', 'string', 'url' ],
-        ]);
+        $chars = 'abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ23456789';
+        $string = '';
+        $max = strlen($chars) - 1;
+
+        for ($i = 0; $i < $numChar; $i++) {
+             $string .= $chars[random_int(0, $max)];
+        }
+
+        return $string;
     }
 
 
