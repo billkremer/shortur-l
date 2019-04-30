@@ -37,9 +37,10 @@
 
                                             @error('url')
 
-                                                <span class="invalid-feedback text-lg-left" role="alert">
-                                                    <strong>Error: Long URL is not a valid URL.</strong>
-                                                </span>
+                                                <h5 class="text-danger text-lg-left " role="alert">
+                                                    <br>
+                                                    <strong class="text-lg-left">Error: Long URL is not a valid URL.</strong>
+                                                </h5>
                                             @enderror
                                         </div>
                                     </div>
@@ -59,52 +60,71 @@
             </div>
 
             <div class="row justify-content-center ">
-                <div class="col-md-12 border border-dark rounded-top pl-0 pr-0 mb-0">
-                    <!-- <div class="row"> -->
-
-                        <div class="card">
-
-                            <div class="card-body">
-                                
-
-
-                                    @if (session('status'))
-                                        <div class="alert alert-success" role="alert">
-                                            {{ session('status') }}
-                                        </div>
-                                    @endif
-
-                                    You are logged in!
-                            </div>
+                <div class="col-md-12 border border-dark rounded-top mb-n1 bg-white">
+                    <div class="row">
+                        <div class="col-md-6 border-right border-dark ">
+                            <strong>Original URL</strong>
                         </div>
-                    <!-- </div> -->
+                    
+                        <div class="col-md-4 border-right border-dark">
+                            <strong class="">Tiny URL</strong>
+                        </div>
+                        <div class="col-md-2 ">
+                            <strong>Hit Count</strong>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row justify-content-center ">
-                <div class="col-md-12 border border-dark rounded-bottom pl-0 pr-0 mt-n1 ">
-                    <div class="card">
-                        <div class="card-body">
 
-                            <div class="row">
+<!-- foreach -1 start -->
 
-                                <div class="col-md-6 border-right border-dark">
+<?php  foreach ($urls as $key => $value) {
+print_r($key);
+print_r($value);
 
-                                        You are logged in!
-                                </div>
-                            
-                                <div class="col-md-4 border-right border-dark">
 
-                            something
-                                </div>
-                                <div class="col-md-2">
 
-                                    Hit Count
-                                </div>
-                            </div>
+}
+die;
+  ?>
+
+                <div class="col-md-12 border border-dark mb-n1 bg-white">
+                    <div class="row">
+                        <div class="col-md-6 border-right border-dark text-dark">
+                            Original URL
+                        </div>
+                    
+                        <div class="col-md-4 border-right border-dark">
+                            Tiny URL
+                        </div>
+                        <div class="col-md-2 ">
+                            Hit Count
+                        </div>
+                    </div>
+
+                </div>
+<!-- foreach end -->
+
+<!-- bottom row -->
+
+                <div class="col-md-12 border border-dark rounded-bottom bg-white mb-0">
+                    <div class="row">
+                        <div class="col-md-6 border-right border-dark ">
+                            Original URL
+                        </div>
+                    
+                        <div class="col-md-4 border-right border-dark">
+                            Tiny URL
+                        </div>
+                        <div class="col-md-2 ">
+                            Hit Count
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
+            
 
 
         </div>
