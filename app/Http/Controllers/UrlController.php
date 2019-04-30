@@ -16,7 +16,7 @@ class UrlController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -30,6 +30,8 @@ class UrlController extends Controller
 
         $lu = Shorturl::where('shorturl', $shorturl);
         // get long url from db
+
+        // check whether it exists?
 
         $lu->increment('hitcount');
          //update hit count
