@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Shorturl;
+use Illuminate\Support\Facades\Auth;
+
 
 class UrlController extends Controller
 {
@@ -14,7 +16,7 @@ class UrlController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -26,31 +28,39 @@ class UrlController extends Controller
     public function index($shorturl)
     {
 
-        // get long url from db   
-        $lu = Shorturl::where('shorturl', $shorturl)->first()->value('url');
+        $lu = Shorturl::where('shorturl', $shorturl);
+        // get long url from db
 
-        $longUrl['longUrl'] = $lu;
+        $lu->increment('hitcount');
+         //update hit count
+
+        $longUrl['longUrl'] = $lu->value('url');;
 
         return view('url', $longUrl);
     }
 
-    public function store()
+    public function create(Request $request)
     {
-
+        $validatedData = $request->validate([
+            'url' => 'required|string|url',
+        ]);
+        // print_r($validatedData); die;
         
+
+
         do {
             $newSU = $this->alphanum(5);
         } while (Shorturl::where('shorturl', $newSU)->first()); 
         // if it exists already, get a new shortened url.
 
-        // $su = new Shorturl
-        // $su->userid = Auth::user()->id;
-        // $su->url = 
-        // $su->shorturl = $newSU;
+        $su = new Shorturl();
+        $su->userid = Auth::user()->id;
+        $su->url = $request->get('url');
+        $su->shorturl = $newSU;
 
 
-        // $su->save();
-        return redirect()->route('/home'); // ? get updated data first...
+        $su->save();
+        return redirect()->route('home'); // ? get updated data first...
     }
 
     private function alphanum($numChar) 

@@ -25,6 +25,7 @@ Route::get('/t/{shorturl}', 'UrlController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
+Route::post('/newUrl', 'UrlController@create')->name('newUrl');
 

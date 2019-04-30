@@ -3,6 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use App\Http\Controllers\Controller;
+use \Auth;
+// use Illuminate\Foundation\Auth\AuthenticatesUsers;
+// use Illuminate\Support\Facades\Auth;
+
+use App\User;
+
+use App\Shorturl;
+
 
 class HomeController extends Controller
 {
@@ -13,7 +22,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -23,6 +32,37 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        // get current shorturls
+        $userid = Auth::user()->id;
+
+        $urls = Shorturl::where('userid', $userid)->get();
+
+        return view('home', $urls);
     }
+
+
+    public function getRandShortUrl ()
+    {
+
+    }
+
+    /**
+     * Get a validator for an incoming url request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'url' => ['required', 'string', 'url' ],
+        ]);
+    }
+
+
+
+
 }
+
+
