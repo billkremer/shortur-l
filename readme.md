@@ -19,12 +19,12 @@ This is a URL shortening application
     * <code>$ npm run dev</code>
 7. Run local server
     * <code>$ php artisan serve</code>
-8. find app at [http://localhost:8000/](https://localhost:8000/)
+8. find app at [http://localhost:8000/](http://localhost:8000/)
 
 
 ## Find on Heroku
 
-[https://shortenerl.herokuapp.com/](https://shortenerl.herokuapp.com/)
+[http://shortenerl.herokuapp.com/](http://shortenerl.herokuapp.com/)
 
 note: Heroku version of application uses PostgreSQL.
 
