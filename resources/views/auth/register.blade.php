@@ -74,7 +74,7 @@
                     </form>
                     <div class="col-md-12">
                         <button type="button" class="btn btn-link btn-block">
-                            <a href="/">{{ __('Sign In') }}</a>
+                            <a href="/login">{{ __('Sign In') }}</a>
                         </button> 
 
                     </div>

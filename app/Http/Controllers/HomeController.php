@@ -3,13 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Http\Controllers\Controller;
-use \Auth;
-// use Illuminate\Foundation\Auth\AuthenticatesUsers;
-// use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Auth;
 use App\User;
-
 use App\Shorturl;
 
 
@@ -25,48 +20,49 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+
     /**
-     * Show the application dashboard.
+     * Show the main page.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-
         // get current shorturls
         $userid = Auth::user()->id;
 
         $urls = Shorturl::where('userid', $userid)->get();
-        // ->only(['url','shorturl','hitcount']);
-        // $urlarray = $urls->only(['url','shorturl','hitcount']);
-// print_r($urls->all()); die; //['groups'=>$groups]
+
         return view('home', ['urls'=>$urls->all()]);
     }
 
 
+    /**
+     * Create a new shortened url.
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function create(Request $request)
     {
         $validatedData = $request->validate([
             'url' => 'required|string|url',
         ]);
-        // print_r($validatedData); die;
-        
-
 
         do {
             $newSU = $this->alphanum(5);
         } while (Shorturl::where('shorturl', $newSU)->first()); 
-        // if it exists already, get a new shortened url.
+        // if it exists already, get a new shortened 5 character url.
 
         $su = new Shorturl();
         $su->userid = Auth::user()->id;
         $su->url = $request->get('url');
         $su->shorturl = $newSU;
 
-
         $su->save();
-        return redirect()->route('home'); // ? get updated data first...
+
+        return redirect()->route('home'); 
     }
+
 
     private function alphanum($numChar) 
     {
@@ -82,8 +78,4 @@ class HomeController extends Controller
     }
 
 
-
-
 }
-
-

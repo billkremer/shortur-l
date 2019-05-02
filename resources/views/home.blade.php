@@ -86,7 +86,7 @@
                         </div>
                     
                         <div class="col-md-4 border-right border-dark py-3">
-                            <a class="text-decoration-none text-reset" href="http://127.0.0.1:8000/t/<?= $url['shorturl']; ?>" target="_blank">http://localhost:8000/t/<?= $url['shorturl']; ?></a>
+                            <a class="text-decoration-none text-reset" href="<?= url('/'); ?>/t/<?= $url['shorturl']; ?>" target="_blank"><?= url('/'); ?>/t/<?= $url['shorturl']; ?></a>
                         </div>
                         <div class="col-md-2 py-3">
                             <?= $url['hitcount']; ?>

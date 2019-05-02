@@ -12,14 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    // return view('auth.login'); // opens app with login page
+    return view('auth.register'); // opens app to registration page
 });
-
 
 Route::get('/logout', function () {
-    return redirect('/');
+    // return redirect('/');
+    return redirect('/login'); // sends logout specifically to login
 });
-
 
 Route::get('/t/{shorturl}', 'UrlController@index');
 
@@ -29,3 +29,6 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::post('/newUrl', 'HomeController@create')->name('newUrl');
 
+Route::any('/{x}', function () {
+	return redirect('/home'); // if someone tries something else it redirects to /home.  if not authenticated, Laravel sends to /login.
+}); 
