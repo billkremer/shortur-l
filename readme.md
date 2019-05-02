@@ -1,4 +1,4 @@
-# a Shorter-url
+# Shortenerl
 
 This is a URL shortening application
 
@@ -25,9 +25,11 @@ This is a URL shortening application
 ## Find on Heroku
 
 [https://shortenerl.herokuapp.com/](https://shortenerl.herokuapp.com/)
+
 note: Heroku version of application uses PostgreSQL.
 
-### Big Plan
+
+## Big Plan
 1. DB
 
     a. Auth table: id, username, password (hashed)
