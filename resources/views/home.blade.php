@@ -62,14 +62,14 @@
             <div class="row justify-content-center ">
                 <div class="col-md-12 border border-dark rounded-top mb-n1 bg-white">
                     <div class="row">
-                        <div class="col-md-6 border-right border-dark ">
+                        <div class="col-md-6 border-right border-dark py-3">
                             <strong>Original URL</strong>
                         </div>
                     
-                        <div class="col-md-4 border-right border-dark">
+                        <div class="col-md-4 border-right border-dark py-3">
                             <strong class="">Tiny URL</strong>
                         </div>
-                        <div class="col-md-2 ">
+                        <div class="col-md-2 py-3">
                             <strong>Hit Count</strong>
                         </div>
                     </div>
