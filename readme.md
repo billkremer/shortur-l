@@ -7,27 +7,33 @@ This is a URL shortening application
 
 1. git clone this repo to your computer
     * <code>$ git clone git@github.com:billkremer/shortenerl.git</code>
-2. cd shortenerl
-3. composer install
-4. yarn
-5. <code>$ cp .env.example .env</code>
-5. <code>$ php artisan key:generate</code>
-6. npm run dev
-7. php artisan serve
+2. <code>$ cd shortenerl</code>
+3. Install Dependencies
+    * <code>$ composer install</code>
+    * <code>$ yarn</code>
+4. update .env
+    * <code>$ cp .env.example .env</code>
+5. Add Key
+    * <code>$ php artisan key:generate</code>
+6. Compile
+    * <code>$ npm run dev</code>
+7. Run local server
+    * <code>$ php artisan serve</code>
 8. find app at [http://localhost:8000/](https://localhost:8000/)
 
 
 ## Find on Heroku
 
 [https://shortenerl.herokuapp.com/](https://shortenerl.herokuapp.com/)
-
+note: Heroku version of application uses PostgreSQL.
 
 ### Big Plan
 1. DB
 
     a. Auth table: id, username, password (hashed)
 
-    b. Link table: id, userid, original link URL, shorter URL, hit count
+    b. URL table: id, userid, original link URL, shorter URL, hit count
+
 
 
 2. Routes
@@ -60,10 +66,13 @@ This is a URL shortening application
 
 	e. Consider having URLs have similar padding to Sign Out on /home relative to box below.
 
-	f. Consider a error on the url page or redirect to / 
+	f. Consider a error on the url page or redirect to /
 
 	g. Consider styling the URLs to look like URLs (blue and underlined) so user isn't confused
 
+	h. Add a page refresh on a shorturl click to update the hitcount.  User shouldn't notice since the new tab/window will be opening with the content.
+
+	i. Consider starting at / === /login instead of /register
 
 
 
