@@ -81,7 +81,7 @@
 
                 <div class="col-md-12 border border-dark mb-n1 bg-white @if ($loop->last) rounded-bottom @endif">
                     <div class="row">
-                        <div class="col-md-6 border-right border-dark py-3">
+                        <div class="col-md-6 border-right border-dark py-3 overflow-auto">
                             <a class="text-decoration-none text-reset" href="<?= $url['url']; ?>" target="_blank"><?= $url['url']; ?></a>
                         </div>
                     
