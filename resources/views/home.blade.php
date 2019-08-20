@@ -27,7 +27,7 @@
 
                             <div class="card-body">
                                 <form method="POST" action="{{ route('newUrl') }}">
-                                    @csrf
+                                    @csrf 
                                     <div class="row mb-4">
 
                                    
@@ -39,7 +39,7 @@
 
                                                 <h5 class="text-danger text-lg-left " role="alert">
                                                     <br>
-                                                    <strong class="text-lg-left">Error: Long URL is not a valid URL.</strong>
+                                                    <strong class="text-lg-left">Error: Long URL is not a valid URL. (ex: http://www.google.com)</strong>
                                                 </h5>
                                             @enderror
                                         </div>
